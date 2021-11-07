@@ -97,7 +97,7 @@ int LinkList_ResetSlider(LINK_LIST* link_list);
 
 /*
  * Function:		LinkList_GetSlider()
- * Description:		返回链表游标指向的结点数据
+ * Description:		获取链表游标指向的结点数据
  * Time complexity:	O(1)
  * Input:	
  *		link_list:	LINK_LIST*类型，链表的地址	
@@ -109,7 +109,7 @@ LIST_NODE LinkList_GetSlider(LINK_LIST* link_list);
 
 /*
  * Function:		LinkList_SliderForward()
- * Description:		返回当前游标指向的结点的数据，游标指向其后继结点
+ * Description:		获取当前游标指向的结点的数据，游标指向其后继结点
  * Time complexity:	O(1)
  * Input:	
  *		link_list:	LINK_LIST*类型，链表的地址	
@@ -122,7 +122,7 @@ LIST_NODE LinkList_SliderForward(LINK_LIST* link_list);
 
 /*
  * Function:		LinkList_SliderBackward()
- * Description:		返回当前游标指向的结点的地址，游标指向其前驱结点
+ * Description:		返回当前游标指向的结点的数据，游标指向其前驱结点
  * Time complexity:	O(1)
  * Input:	
  *		link_list:	LINK_LIST*类型，链表的地址	
@@ -135,7 +135,7 @@ LIST_NODE LinKList_SliderBackward(LINK_LIST* link_list);
 
 /*
  * Function:		LinkList_InsertBeforeSlider()
- * Description:		在游标指向的结点前面插入一个结点，并将游标指向插入的结点，在第一个结点之前插入的话，头结点会变成插入的结点
+ * Description:		在游标指向的结点前面插入一个结点，并将游标指向插入的结点，在第一个结点之前插入的话，头结点会指向插入的结点
  * Time complexity:	O(1)
  * Input:	
  *		link_list:	LINK_LIST*类型。链表的地址。	
@@ -163,7 +163,7 @@ int LinkList_InsertAfterSlider(LINK_LIST* link_list, LIST_NODE list_node);
 
 /*
  * Function:		LinkList_DeleteSlider()
- * Description:		删除游标指向的结点，返回删除结点的数据，游标指向删除结点的后继结点。如果删除的是第一个结点，被删除结点的后继结点将会变成第一个结点。如果删除之后链表变成空表，游标置NULL
+ * Description:		删除游标指向的结点，获取删除结点的数据，游标指向删除结点的后继结点。如果删除的是第一个结点，被删除结点的后继结点将会变成第一个结点。如果删除之后链表变成空表，游标置NULL
  * Time complexity:	O(1)
  * Input:	
  *		link_list:	LINK_LIST*类型。链表的地址。	
@@ -176,7 +176,7 @@ LIST_NODE LinkList_DeleteSlider(LINK_LIST* link_list);
 
 /*
  * Function:		LinkList_SetSlider()
- * Description:		如果list_node是链表中结点的数据，则将游标指向该结点
+ * Description:		如果链表中存在某个结点包含数据list_node，将游标指向第一个包含该数据的结点
  * Time complexity:	O(n)
  * Input:	
  *		link_list:	LINK_LIST*类型。链表的地址。	
@@ -190,7 +190,7 @@ int LinkList_SetSlider(LINK_LIST* link_list, LIST_NODE list_node);
 
 /*
  * Function:		LinkList_Traverse()
- * Description:		遍历链表，每个结点的数据执行visit()操作
+ * Description:		遍历链表，每个结点的数据作为参数，调用函数visit()
  * Time complexity:	O(n)
  * Input:	
  *		link_list:	LINK_LIST*类型。链表的地址。	
