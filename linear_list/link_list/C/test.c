@@ -12,13 +12,13 @@
 
 // TEACHER结构体
 typedef struct TEACHER{
-	LINK link;				// 链表的指针域，如果想使用链表库，需要将该结构体放在业务节点的第一个位置
+//	LINK link;				// 链表的指针域，如果想使用链表库，需要将该结构体放在业务结点的第一个位置
 	int age;
 	char name[32];
 }TEACHER;
 
 // TEACHER类型的print函数
-int TeacherPrint(LINK* t);
+int TeacherPrint(LIST_NODE t);
 
 int main(void)
 {
@@ -26,7 +26,7 @@ int main(void)
 	LINK_LIST* link_list = NULL;
 
 	int list_length = 0;
-	LINK* list_slider = NULL;
+	LIST_NODE list_slider = NULL;
 	int i = 0;
 
 
@@ -45,11 +45,11 @@ int main(void)
 	strcpy(t4.name, "teacher_04");
 	strcpy(t5.name, "teacher_05");
 
-	TeacherPrint((LINK*)(&t1));
-	TeacherPrint((LINK*)(&t2));
-	TeacherPrint((LINK*)(&t3));
-	TeacherPrint((LINK*)(&t4));
-	TeacherPrint((LINK*)(&t5));
+	TeacherPrint((LIST_NODE)(&t1));
+	TeacherPrint((LIST_NODE)(&t2));
+	TeacherPrint((LIST_NODE)(&t3));
+	TeacherPrint((LIST_NODE)(&t4));
+	TeacherPrint((LIST_NODE)(&t5));
 
 	// 线性表测试开始
 	printf("\n************** 线性表测试开始 ****************\n");
@@ -62,40 +62,40 @@ int main(void)
 	printf("length = %d\n", list_length);
 
 
-	// 插入元素
-	printf("\n插入元素：\n");
-	LinkList_InsertBeforeSlider(link_list, (LINK*)(&t1));
+	// 使用LinkList_InsertBeforeSlider()插入元素
+	printf("\n使用LinkList_InsertBeforeSlider()插入元素：\n");
+	LinkList_InsertBeforeSlider(link_list, (LIST_NODE)(&t1));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 	
-	LinkList_InsertBeforeSlider(link_list, (LINK*)(&t2));
+	LinkList_InsertBeforeSlider(link_list, (LIST_NODE)(&t2));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 
-	LinkList_InsertBeforeSlider(link_list, (LINK*)(&t3));
+	LinkList_InsertBeforeSlider(link_list, (LIST_NODE)(&t3));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 
-	LinkList_InsertBeforeSlider(link_list, (LINK*)(&t4));
+	LinkList_InsertBeforeSlider(link_list, (LIST_NODE)(&t4));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 
-	LinkList_InsertBeforeSlider(link_list, (LINK*)(&t5));
+	LinkList_InsertBeforeSlider(link_list, (LIST_NODE)(&t5));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 
-	// 初始化并移动游标
-	printf("\n初始化并移动游标:\n");
+	// 初始化并向前移动游标
+	printf("\n初始化并向前移动游标:\n");
 
 	LinkList_ResetSlider(link_list);
 	for(i = 0; i < list_length; ++i)
@@ -103,6 +103,9 @@ int main(void)
 		list_slider = LinkList_SliderForward(link_list);
 		TeacherPrint(list_slider);
 	}
+
+	// 初始化并向后移动游标
+	printf("\n初始化并向后移动游标:\n");
 
 	LinkList_ResetSlider(link_list);
 	LinKList_SliderBackward(link_list);
@@ -119,7 +122,7 @@ int main(void)
 		printf("清空链表:\t");
 		LinkList_Clear(link_list);
 		list_length = LinkList_GetLength(link_list);
-		printf("length = %d\t",list_length);
+		printf("length = %d\n",list_length);
 	}
 
 	if(LinkList_IsEmpty(link_list))
@@ -127,40 +130,40 @@ int main(void)
 		printf("链表已空!\n");
 	}
 
-	// 第二种方法插入元素
-	printf("\n第二种方法插入元素：\n");
-	LinkList_InsertAfterSlider(link_list, (LINK*)(&t1));
+	// 使用LinkList_InsertAfterSlider()插入元素
+	printf("\n使用LinkList_InsertAfterSlider()插入元素：\n");
+	LinkList_InsertAfterSlider(link_list, (LIST_NODE)(&t1));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 
-	LinkList_InsertAfterSlider(link_list, (LINK*)(&t2));
+	LinkList_InsertAfterSlider(link_list, (LIST_NODE)(&t2));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 
-	LinkList_InsertAfterSlider(link_list, (LINK*)(&t3));
+	LinkList_InsertAfterSlider(link_list, (LIST_NODE)(&t3));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 
-	LinkList_InsertAfterSlider(link_list, (LINK*)(&t4));
+	LinkList_InsertAfterSlider(link_list, (LIST_NODE)(&t4));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 
-	LinkList_InsertAfterSlider(link_list, (LINK*)(&t5));
+	LinkList_InsertAfterSlider(link_list, (LIST_NODE)(&t5));
 	list_length = LinkList_GetLength(link_list);
 	list_slider = LinkList_GetSlider(link_list);
 	printf("length = %d, slider is ", list_length);
 	TeacherPrint(list_slider);
 
-	// 初始化并移动游标
-	printf("\n初始化并移动游标:\n");
+	// 初始化并向前移动游标
+	printf("\n初始化并向前移动游标:\n");
 
 	LinkList_ResetSlider(link_list);
 	for(i = 0; i < list_length; ++i)
@@ -168,6 +171,9 @@ int main(void)
 		list_slider = LinkList_SliderForward(link_list);
 		TeacherPrint(list_slider);
 	}
+
+	// 初始化并向后移动游标
+	printf("\n初始化并向后移动游标:\n");
 
 	LinkList_ResetSlider(link_list);
 	LinKList_SliderBackward(link_list);
@@ -177,20 +183,20 @@ int main(void)
 		TeacherPrint(list_slider);
 	}
 
-	// 遍历节点
+	// 遍历结点
 	printf("\n遍历结点：\n");
 	LinkList_Traverse(link_list, TeacherPrint);
 
-	// 删除节点
-	printf("\n删除节点：\n");
-	LinkList_ResetSlider(link_list);
+	// 删除结点
+	printf("\n删除结点：\n");
 
+	LinkList_ResetSlider(link_list);
 	while(!LinkList_IsEmpty(link_list))
 	{
 		list_slider = LinkList_DeleteSlider(link_list);
 		list_length = LinkList_GetLength(link_list);
 		printf("length = %d\t", list_length);
-		printf("删除节点：\t");
+		printf("删除结点：\t");
 		TeacherPrint(list_slider);
 	}
 
@@ -204,10 +210,11 @@ int main(void)
 }
 
 // TEACHER类型的print函数
-int TeacherPrint(LINK* t)
+int TeacherPrint(LIST_NODE t)
 {
 	// 将SEQ_LIST_ELEM类型的指针转换为TEACHER类型的指针
 	TEACHER* t1 = (TEACHER*)t;
+
 	// 参数检查
 	if (t == NULL)
 	{
